@@ -1,0 +1,27 @@
+Issue Type,Issue ID,Summary,Epic Link,Priority,Story Points,Sprint,Labels,Description,Acceptance Criteria,Linked FR,Linked BR
+Epic,E1,E1 Data Ingestion,,High,,,UFRS,"Ingest NPCI, Switch and CBS data",,,
+Epic,E2,E2 Reconciliation Engine,,High,,,UFRS,Match and classify transactions,,,
+Epic,E3,E3 Reversal & Compensation,,High,,,UFRS,Track T+1 reversal and compensation,,,
+Epic,E4,E4 Exception Management,,High,,,UFRS,"Work queue, maker-checker, audit",,,
+Epic,E5,E5 Notification & Disputes,,Medium,,,UFRS,SMS and NPCI UDIR,,,
+Epic,E6,"E6 Reporting, Security & Audit",,Medium,,,UFRS,Dashboards and MIS,,,
+Story,US-01,Auto-fetch NPCI raw file daily,E1,High,5,Sprint 1,UFRS;UPI;Recon,As a recon analyst I want the NPCI file downloaded automatically so that I avoid manual work.,Given file on SFTP When scheduler runs at 07:00 Then file loaded status RECEIVED; if missing retry every 15 min x5 then alert,FR-01,BR-01
+Story,US-02,Validate and de-duplicate files,E1,High,3,Sprint 1,UFRS;UPI;Recon,As an ops supervisor I want files validated so that bad data is not loaded.,Trailer mismatch rejected RECORD_COUNT_MISMATCH; duplicate blocked DUPLICATE_FILE,"FR-02, FR-05",BR-01
+Story,US-03,Ingest switch and CBS data,E1,High,5,Sprint 1,UFRS;UPI;Recon,As a recon analyst I want switch and CBS data loaded for the same date so that 3-way matching is possible.,Load summary shows record counts per source,"FR-03, FR-04",BR-02
+Story,US-04,Three-way auto-match,E2,High,8,Sprint 2,UFRS;UPI;Recon,"As a recon analyst I want automatic matching on RRN, amount, date, status.",Perfect match -> RECONCILED; amount mismatch -> EX07,"FR-06, FR-07",BR-03
+Story,US-05,Secondary match when RRN missing,E2,Medium,5,Sprint 3,UFRS;UPI;Recon,As a recon analyst I want a fallback match so fewer records become exceptions.,Match on amount + VPA + 5 min window flagged SECONDARY,FR-08,BR-03
+Story,US-06,Classify exceptions,E2,High,5,Sprint 2,UFRS;UPI;Recon,As an ops supervisor I want mismatches categorised EX01-EX08.,CBS debit + NPCI FAILED -> EX01 with due date T+1,FR-09,BR-04
+Story,US-07,Track T+1 reversal,E3,High,5,Sprint 2,UFRS;UPI;Recon,As a compliance officer I want reversal tracked against T+1.,Reversed within TAT auto-closed; else TAT_BREACH and compensation record,"FR-10, FR-11, FR-12",BR-05
+Story,US-08,Calculate compensation,E3,High,5,Sprint 2,UFRS;UPI;Recon,As a finance officer I want Rs100/day compensation computed automatically.,0 days = 0; 2 days = 200; 6 days = 600,"FR-13, FR-14",BR-06
+Story,US-09,Exception work queue,E4,High,5,Sprint 3,UFRS;UPI;Recon,As an analyst I want a prioritised queue.,"Sorted by SLA breach, age, amount; filter by category/status","FR-15, FR-16, FR-20",BR-07
+Story,US-10,Maker-checker adjustment,E4,High,8,Sprint 3,UFRS;UPI;Recon,As a supervisor I want to approve adjustments before posting.,Maker cannot approve own entry; approval posts to CBS and stores reference,"FR-18, FR-19",BR-08
+Story,US-11,Case audit trail,E4,High,3,Sprint 3,UFRS;UPI;Recon,As an auditor I want an immutable action log.,"Audit record with user, time, old/new value; not editable","FR-17, FR-27",BR-13
+Story,US-12,Customer notifications,E5,Medium,3,Sprint 4,UFRS;UPI;Recon,As a customer I want SMS on failure and refund.,SMS sent on closure with CBS ref; delivery status stored,FR-21,BR-09
+Story,US-13,Raise and track NPCI UDIR,E5,Medium,8,Sprint 4,UFRS;UPI;Recon,As a dispute analyst I want to raise UDIR from the case screen.,Dispute submitted; complaint reference stored,FR-22,BR-10
+Story,US-14,Dashboard and MIS,E6,Medium,5,Sprint 4,UFRS;UPI;Recon,As an Ops head I want KPIs and ageing.,"Recon %, open cases by category, ageing buckets, breaches, compensation shown","FR-23, FR-24",BR-11
+Story,US-15,Transaction status API,E6,Medium,5,Sprint 4,UFRS;UPI;Recon,As a support agent I want to query status by RRN so I can answer customers.,200 with status and exception block; 404 for unknown RRN,FR-25,BR-12
+Story,US-16,Bulk re-process unmatched items,E2,Low,5,Sprint 5,UFRS;UPI;Recon,As an analyst I want to re-run matching on selected records.,Selected records re-processed; results logged,FR-28,BR-14
+Task,TSK-01,Design DB schema and indexes,E1,Medium,3,Sprint 1,UFRS,,,,
+Task,TSK-02,Build SFTP connector and scheduler,E1,Medium,5,Sprint 1,UFRS,,,,
+Task,TSK-03,Configure RBAC roles,E6,Medium,3,Sprint 3,UFRS,,,,
+Bug,BUG-01,Sample defect: duplicate RRN not rejected in switch loader,E1,Medium,2,Sprint 2,UFRS,,,,

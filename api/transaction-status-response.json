@@ -1,0 +1,20 @@
+{
+  "rrn": "427715689012",
+  "upiTxnId": "BDB8A1F3C2D94E7B9A10",
+  "txnDate": "2026-10-04T14:32:11+05:30",
+  "payerVpa": "prachi***@bdb",
+  "payeeVpa": "grocer***@okbank",
+  "amount": 5000.00,
+  "currency": "INR",
+  "switchStatus": "SUCCESS",
+  "npciStatus": "FAILED",
+  "cbsStatus": "DEBITED",
+  "reconStatus": "EXCEPTION",
+  "exception": {
+    "caseId": "EX-2026-100245",
+    "category": "EX01",
+    "description": "Debit without credit - reversal pending",
+    "reversalDueDate": "2026-10-05",
+    "tatBreached": false
+  }
+}

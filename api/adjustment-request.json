@@ -1,0 +1,10 @@
+{
+  "adjustmentType": "REVERSAL_CREDIT",
+  "rrn": "427715689012",
+  "amount": 5000.00,
+  "currency": "INR",
+  "customerAccountNo": "XXXXXXXX1234",
+  "reasonCode": "DEBIT_NO_CREDIT",
+  "remarks": "NPCI status FAILED; no credit-back in CBS",
+  "makerId": "ops.analyst01"
+}
