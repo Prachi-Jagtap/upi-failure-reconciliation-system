@@ -1,6 +1,6 @@
 # UPI Payment Failure & Reconciliation System (UFRS)
 
-> A Business Analysis portfolio project for the BFSI – Payments domain.
+> A Technical Business Analysis portfolio project for the BFSI – Payments domain.
 > **Disclaimer:** This is an illustrative case study built from publicly available NPCI/RBI information. "Bharat Digital Bank (BDB)" is a fictional bank. No real customer, bank or confidential data is used.
 
 ## 1. Problem Statement
