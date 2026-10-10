@@ -1,6 +1,7 @@
 # UPI Payment Failure & Reconciliation System (UFRS)
 
 > A Technical Business Analysis portfolio project for the BFSI – Payments domain.
+
 > **Disclaimer:** This is an illustrative case study built from publicly available NPCI/RBI information. "Bharat Digital Bank (BDB)" is a fictional bank. No real customer, bank or confidential data is used.
 
 ## 1. Problem Statement
@@ -32,7 +33,7 @@ Automate detection, matching, auto-reversal tracking, exception handling and com
 | 10 | Jira Backlog (import-ready CSV) | [jira/backlog.csv](jira/backlog.csv) |
 
 ## 4. Tools & Techniques Used
-Mermaid (BPMN-style flows & sequence diagrams) · SQL (PostgreSQL) · Postman/JSON · Jira (Epics/Stories) · MoSCoW prioritisation · INVEST user stories · Gherkin acceptance criteria · RTM · UAT planning
+Drawio (BPMN-style flows & sequence diagrams) · SQL · Postman/JSON · Jira (Epics/Stories) · MoSCoW prioritisation · INVEST user stories · acceptance criteria · RTM · UAT planning
 
 ## 5. My Role
 Technical Business Analyst – requirement elicitation, as-is/to-be modelling, BRD/FRD, user stories, API & data mapping, SQL validation, UAT design, backlog management.
